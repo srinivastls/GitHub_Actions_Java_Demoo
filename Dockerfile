@@ -1,5 +1,4 @@
-FROM openjdk:11
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
-RUN javac Main.java
-CMD ["java", "Main"]
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY target/java-app-1.0.0.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
